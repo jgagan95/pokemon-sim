@@ -16,4 +16,27 @@ while True:
         print("\nPlease select from the choices given")
 
 #determine rival pokemon (opposite of what you select)
+rival_party = []
+if starter_pokemon == "bulbasaur":
+    rival_party.append("Charmander")
+elif starter_pokemon == "squirtle":
+    rival_party.append("Bulbasaur")
+else:
+    rival_party.append("Squirtle")
+
+print(f"\n\n\n\n\nMeanwhile, your opponent has chosen {rival_party[0]}!")
+
 #small battle
+#assign movesets and stats to pokemon based off of selection
+pokemon_stats = {
+    'HP': 19,
+    'Attack': randint(10, 12),
+    'Defense': randint(10, 12),
+    'Speed': randint(10, 12)
+}
+
+charmander_moves = ['Scratch', 'Growl']
+
+squirtle_moves = ['Tackle', 'Tail Whip']
+
+bulbasaur_moves = ['Tackle', 'Growl']
