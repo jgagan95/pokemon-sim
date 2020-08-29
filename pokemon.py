@@ -59,3 +59,4 @@ print(rival_pokemon)
 
 # need to fix random, so I may use choice in random module
 #start on battle portion
+# figure out ways to imrove randomness from pokemon_stats
