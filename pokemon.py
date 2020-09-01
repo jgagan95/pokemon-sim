@@ -60,3 +60,6 @@ your_party = {
   'Starter': pokemon_party[0].capitalize(),
   'Moveset': pokemon_party[1]
 }
+
+your_party.update(pokemon_stats)
+rival.update(rival_stats)
