@@ -1,4 +1,5 @@
 from random import randint
+
 pokemon_party = []
 rival_party = []
 
