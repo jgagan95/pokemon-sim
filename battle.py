@@ -1,23 +1,12 @@
 from pokemon import *
-from random import choice, randint
+from random import choice
 
 print("\n\n\n\n\nRival: Let's check out our pokemon\nCome on! I'll take you on")
 print(f"Rival would like to battle. They sent out {rival_party[0]}")
 
-
-# if (rival["Speed"] > your_party["Speed"]):
-#   print("Hey") #placeholder
-#   #this person gets priority to attack
-# elif rival["Speed"] == your_party["Speed"]:
-#   print("Do this") #placeholder
-#   #choice deteremines who goes first
-# else:
-#   print("ney") #placeholder
-#   #you go first
-
 game_over = False
 
-def attack():
+def rival_attack():
   rival_attack = choice(rival["Moveset"])
 
   if rival_attack == "Scratch" or rival_attack == "Tackle":
@@ -33,13 +22,36 @@ def attack():
   return rival_attack
 
 def stat_handling():
-  if (rival["Attack"] == 6 or your_party["Attack"] == 6) or (rival["Defense"] == 6 or your_party["Defense"] == 6):
+  if rival["Attack"] <= 7 or rival["Defense"] <= 7:
+    print("The attack failed!")
+  elif your_party["Defense"] <= 7 or your_party["Attack"] <= 7:
     print("The attack failed!")
 
-print(your_party)
-for i in range(9):
-  print(attack())
-print(your_party)
+def speed():
+  if (rival["Speed"] > your_party["Speed"]):
+    rival_attack()
+  elif rival["Speed"] == your_party["Speed"]:
+    random_first_attack
+  else:
+    my_attack()
 
-#need to determine which side goes first, but not a coinflip
-#calculating stat reducing with abilities
+def my_attack():
+  my_attack = choice(your_party["Moveset"])
+
+  if my_attack == "Scratch" or my_attack == "Tackle":
+    rival["HP"] -= 3
+    stat_handling()
+  elif my_attack == "Tail Whip":
+    rival["Defense"] -= 1
+    stat_handling()
+  else:
+    rival["Attack"] -= 1
+    stat_handling()
+
+  return my_attack
+
+random_first_attack = choice([rival_attack, my_attack])()
+
+print(random_first_attack)
+
+#need to get code onto pokemon.py then run the battle on this file
