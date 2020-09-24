@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 
 pokemon_party = []
 rival_party = []
@@ -33,7 +33,7 @@ while True:
         pokemon_party.append(starter_pokemon)
         break
     else:
-        print("\nPlease select from the choices given")
+        print("\nPlease select from the choices given.")
 
 def rival_starter():
   if starter_pokemon == "bulbasaur":
@@ -63,3 +63,47 @@ your_party = {
 
 your_party.update(pokemon_stats)
 rival.update(rival_stats)
+
+def rival_attack():
+  rival_attack = choice(rival["Moveset"])
+
+  if rival_attack == "Scratch" or rival_attack == "Tackle":
+    your_party["HP"] -= 3
+    stat_handling()
+  elif rival_attack == "Tail Whip":
+    your_party["Defense"] -= 1
+    stat_handling()
+  else:
+    your_party["Attack"] -= 1
+    stat_handling()
+
+  return rival_attack
+
+def stat_handling():
+  if rival["Attack"] <= 7 or rival["Defense"] <= 7:
+    print("The attack failed!")
+  elif your_party["Defense"] <= 7 or your_party["Attack"] <= 7:
+    print("The attack failed!")
+
+def my_attack():
+  while True:
+    my_attack = input(f'What attack would you like to use? {your_party["Moveset"][0]} or {your_party["Moveset"][1]}:\n').lower()
+    if my_attack == "scratch" or my_attack == "tackle":
+      rival["HP"] -= 3
+      stat_handling()
+      break
+    elif my_attack == "tail thip":
+      rival["Defense"] -= 1
+      stat_handling()
+      break
+    elif my_attack == "growl":
+      rival["attack"] -= 1
+      stat_handling()
+      break
+    else:
+      print("Please select from the choices given.\n")
+
+attack_list = [rival_attack, my_attack]
+
+print("\n\n\nRival: Let's check out our pokemon...\n\nCome on! I'll take you on")
+print(f"Rival would like to battle. They sent out {rival_party[0]}")
