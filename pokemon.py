@@ -87,23 +87,21 @@ def stat_handling():
 
 def my_attack():
   while True:
-    my_attack = input(f'What attack would you like to use? {your_party["Moveset"][0]} or {your_party["Moveset"][1]}:\n').lower()
+    my_attack = input(f'What attack would you like to use? {your_party["Moveset"][0]} or {your_party["Moveset"][1]}:  ').lower()
     if my_attack == "scratch" or my_attack == "tackle":
       rival["HP"] -= 3
       stat_handling()
       break
-    elif my_attack == "tail thip":
+    elif my_attack == "tail whip":
       rival["Defense"] -= 1
       stat_handling()
       break
     elif my_attack == "growl":
-      rival["attack"] -= 1
+      rival["Attack"] -= 1
       stat_handling()
       break
     else:
       print("Please select from the choices given.\n")
-
-attack_list = [rival_attack, my_attack]
 
 print("\n\n\nRival: Let's check out our pokemon...\n\nCome on! I'll take you on")
 print(f"Rival would like to battle. They sent out {rival_party[0]}")
